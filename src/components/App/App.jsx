@@ -24,7 +24,7 @@ function App() {
       <h1 className={css.appTitle}>Phonebook</h1>
       <ContactForm />
       <SearchBox />
-      {isLoading && <Loader isLoading={isLoading} />}
+      <Loader isLoading={isLoading} />
       {error && <Error message={error} />}
       {!isLoading && !error && <ContactList />}
     </>
