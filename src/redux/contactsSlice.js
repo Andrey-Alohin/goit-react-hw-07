@@ -56,7 +56,6 @@ export const selectError = (state) => state.contacts.error;
 export const selectFiltredContacts = createSelector(
   [selectContacts, selectNameFilter],
   (contacts, filter) => {
-    console.log(contacts, "starts");
     if (filter === "") {
       return contacts;
     }
