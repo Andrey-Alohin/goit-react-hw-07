@@ -2,21 +2,14 @@ import { useSelector } from "react-redux";
 import Contact from "../Contact/Contact";
 import css from "./ContactList.module.css";
 import PlaceHolder from "../PlaceHolder/PlaceHolder";
-
-const getVisibleContacts = (filter, contacts) => {
-  if (filter.trim() === "") {
-    return contacts;
-  } else {
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  }
-};
+import {
+  selectContacts,
+  selectFiltredContacts,
+} from "../../redux/contactsSlice";
 
 const ContactList = () => {
-  const contacts = useSelector((state) => state.contacts.items);
-  const filter = useSelector((state) => state.filters.name);
-  const visibleContacts = getVisibleContacts(filter, contacts);
+  const contacts = useSelector(selectContacts);
+  const visibleContacts = useSelector(selectFiltredContacts);
   return (
     <div className={css.contactsContainer}>
       {visibleContacts.length > 0 ? (
